@@ -4,11 +4,9 @@ import numpy as np
 import cv2
 import datetime
 import time
-import argparse
-import sys
 
 """
-   autor@ ievgen_synchyshyn
+   
    there is two methods using here: BackgroundSubtractorKNN() + MOG2()
 """
 
@@ -32,8 +30,8 @@ def motion_detection(cap):
         cv2.imshow('frame_2', fgmask)
         cv2.imshow('frame', frame)
 
-        k = 0xFF & cv2.waitKey(10)
-
+        k = cv2.waitKey(10) & 0xff
         if k == 27:
-            cv2.destroyAllWindows()
-        break
+            break
+    cap.release()
+    cv2.destroyAllWindows()
